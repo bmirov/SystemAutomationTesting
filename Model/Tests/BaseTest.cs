@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemAutomationTesting.Model.Devices;
 
 namespace SystemAutomationTesting.Model
 {
@@ -14,6 +15,8 @@ namespace SystemAutomationTesting.Model
         public string TestResult { get; set; } = "FAIL";
         public CheckboxItem Checkbox { get; set; }
         public List<string> TestSteps { get; set; } = new List<string>();
+
+        public ObservableCollection<BaseDevice> Devices { get; set; }
 
         public BaseTest()
         {
