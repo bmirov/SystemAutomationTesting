@@ -7,17 +7,17 @@ namespace SystemAutomationTesting.Model
 {
     class TestsRunner
     {
-        private List<BaseTest> _selectedTests;
-        private List<Device> _devices;
+        private List<Tests.BaseTest> _selectedTests;
+        private List<Devices.BaseDevice> _devices;
 
-        public TestsRunner(List<BaseTest> selectedTests, List<Device> devices)
+        public TestsRunner(List<Tests.BaseTest> selectedTests, List<Devices.BaseDevice> devices)
         {
             _selectedTests = selectedTests;
             _devices = devices;
         }
 
         // Optional: Add methods to interact with the test objects
-        public List<BaseTest> GetTestObjects()
+        public List<Tests.BaseTest> GetTestObjects()
         {
             return _selectedTests;
         }

@@ -5,85 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemAutomationTesting"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1920">
+        Title="MainWindow" Height="800" Width="1500">
     <Grid>
-        <TabControl>
-            <TabControl.Resources>
-                <Style TargetType="TabItem">
-                    <Setter Property="HeaderTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" FontSize="32" FontWeight="Bold" TextAlignment="Center"/>
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TabControl.Resources>
-            <!-- First Tab -->
-            <TabItem Header="Main">
-                <Grid>
-                    <!-- Define two rows: one for the scrollable content and one for the button -->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <!-- Scrollable content -->
-                        <RowDefinition Height="Auto" />
-                        <!-- Button -->
-                    </Grid.RowDefinitions>
-
-                    <!-- Scrollable Canvas for Checkboxes -->
-                    <ScrollViewer Grid.Row="0">
-                        <StackPanel>
-                            <!-- "All" Checkbox -->
-                            <CheckBox Content="All" IsChecked="False" Checked="AllCheckbox_Checked" Unchecked="AllCheckbox_Unchecked">
-                                <CheckBox.LayoutTransform>
-                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-                                </CheckBox.LayoutTransform>
-                            </CheckBox>
-
-                            <!-- Other Checkboxes -->
-                            <ItemsControl ItemsSource="{Binding MainTab.Tests}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox Content="{Binding Checkbox.Name}" IsChecked="{Binding Checkbox.IsChecked, Mode=TwoWay}">
-                                                <CheckBox.LayoutTransform>
-                                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-                                                </CheckBox.LayoutTransform>
-                                            </CheckBox>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </StackPanel>
-                    </ScrollViewer>
-
-                    <!-- Button locked at the bottom -->
-                    <Button Grid.Row="1" Content="Run Selected Tests" Command="{Binding ProcessSelectedCommand}" HorizontalAlignment="Center" Height="50" Width="150" FontSize="16" FontWeight="Bold" />
-
-                </Grid>
-            </TabItem>
-
-            <!-- Second Tab -->
-            <TabItem Header="Test 1">
-                <Grid>
-                    <DataGrid ItemsSource="{Binding Devices}" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Device Index" Binding="{Binding DeviceIndex}" IsReadOnly="True" Width="*" />
-                            <DataGridTextColumn Header="Device Type" Binding="{Binding DeviceType}" IsReadOnly="True" Width="*" />
-                            <DataGridTextColumn Header="Parameter" Binding="{Binding Parameter}" IsReadOnly="True" Width="*" />
-                            <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="*" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
-
-
-            <TabItem Header="Test 2">
-                <StackPanel>
-                    <TextBlock Text="Results will be displayed here." />
-                    <!-- Add more content as needed -->
-                </StackPanel>
-            </TabItem>
+        <TabControl ItemsSource="{Binding Tabs.Tabs}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentPresenter Content="{Binding Content}"/>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
         </TabControl>
     </Grid>
 </Window>
