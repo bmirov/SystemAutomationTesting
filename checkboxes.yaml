@@ -1,0 +1,60 @@
+﻿- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
+- name: "Option 1"
+  isChecked: false
+- name: "Option 2"
+  isChecked: true
