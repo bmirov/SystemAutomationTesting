@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SystemAutomationTesting.Model.Devices;
+using System.Diagnostics;
 
 namespace SystemAutomationTesting.Model.Tests
 {
@@ -27,6 +28,18 @@ namespace SystemAutomationTesting.Model.Tests
                 new BaseDevice { DeviceIndex = 2, DeviceType = "Actuator", Parameter = "Position", Value = "50%" },
                 new BaseDevice { DeviceIndex = 3, DeviceType = "Controller", Parameter = "Mode", Value = "Auto" }
             };
+        }
+
+        public override void RunTest()
+        {
+            Debug.WriteLine($"Running {TestName} with custom logic.");
+            this.PingDevices();
+            foreach (var step in TestSteps)
+            {
+                Debug.WriteLine($"Executing: {step}");
+            }
+            TestResult = "PASS";
+            Debug.WriteLine($"Test 2 result: {TestResult}");
         }
     }
 }

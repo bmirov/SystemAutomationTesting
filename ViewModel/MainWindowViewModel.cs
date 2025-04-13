@@ -36,7 +36,8 @@ public class MainWindowViewModel : INotifyPropertyChanged
         Tests = new ObservableCollection<BaseTest>
         {
             new Test1(),
-            new Test2()
+            new Test2(),
+            new Test3()
         };
 
         // Initialize commands

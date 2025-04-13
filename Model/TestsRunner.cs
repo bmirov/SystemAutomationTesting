@@ -24,7 +24,7 @@ namespace SystemAutomationTesting.Model
         {
             foreach (var selectedTest in _selectedTests)
             {
-                Debug.WriteLine($"Selected Test: {selectedTest.TestName}, Is Checked: {selectedTest.Checkbox.IsChecked}");
+                selectedTest.RunTest();
             }
         }
     }
