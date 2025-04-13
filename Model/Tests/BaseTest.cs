@@ -16,6 +16,9 @@ namespace SystemAutomationTesting.Model
         public string TestDescription { get; set; }
         public string TestResult { get; set; } = "FAIL";
         public CheckboxItem Checkbox { get; set; }
+        public CheckboxItem PingDevicesCheckbox { get; set; }
+        public virtual bool ShowPingDevicesCheckbox => false;
+
         public List<string> TestSteps { get; set; } = new List<string>();
 
         public ObservableCollection<BaseDevice> Devices { get; set; }
@@ -27,6 +30,8 @@ namespace SystemAutomationTesting.Model
             TestDescription = "Default Test Description";
             TestResult = "FAIL";
             Checkbox = new CheckboxItem { Name = TestName, IsChecked = false };
+            PingDevicesCheckbox = new CheckboxItem { Name = "PingDevices", IsChecked = false };
+
             TestSteps = new List<string>
             {
                 "Step 1: Initialize the test.",

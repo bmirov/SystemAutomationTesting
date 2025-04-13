@@ -7,6 +7,8 @@ namespace SystemAutomationTesting.Model.Tests
 {
     class Test2 : BaseTest
     {
+        public override bool ShowPingDevicesCheckbox => true;
+
         public Test2()
         {
             // Initialize BaseTest attributes
