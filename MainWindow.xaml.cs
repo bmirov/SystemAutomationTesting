@@ -21,6 +21,18 @@ namespace SystemAutomationTesting
             InitializeComponent();
             DataContext = new MainWindowViewModel();
         }
+
+        private void AllCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as MainWindowViewModel;
+            viewModel?.CheckAll(true);
+        }
+
+        private void AllCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as MainWindowViewModel;
+            viewModel?.CheckAll(false);
+        }
     }
 
 }

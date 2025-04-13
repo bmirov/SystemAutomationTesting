@@ -7,17 +7,17 @@ namespace SystemAutomationTesting.Model
 {
     class TestsRunner
     {
-        private List<CheckboxItem> _selectedTests;
+        private List<BaseTest> _selectedTests;
         private List<Device> _devices;
 
-        public TestsRunner(List<CheckboxItem> selectedTests, List<Device> devices)
+        public TestsRunner(List<BaseTest> selectedTests, List<Device> devices)
         {
             _selectedTests = selectedTests;
             _devices = devices;
         }
 
         // Optional: Add methods to interact with the test objects
-        public List<CheckboxItem> GetTestObjects()
+        public List<BaseTest> GetTestObjects()
         {
             return _selectedTests;
         }
@@ -30,7 +30,7 @@ namespace SystemAutomationTesting.Model
             }
             foreach (var selectedTest in _selectedTests)
             {
-                Debug.WriteLine($"Selected Test: {selectedTest.Name}, Is Checked: {selectedTest.IsChecked}");
+                Debug.WriteLine($"Selected Test: {selectedTest.TestName}, Is Checked: {selectedTest.Checkbox.IsChecked}");
                 //try
                 //{
                 //    // Get the type of the class with the same name as the selectedTest.Name

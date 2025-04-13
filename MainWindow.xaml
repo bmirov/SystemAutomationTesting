@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemAutomationTesting"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920">
+        Title="MainWindow" Height="800" Width="1920">
     <Grid>
         <TabControl>
             <TabControl.Resources>
@@ -33,11 +33,19 @@
                     <!-- Scrollable Canvas for Checkboxes -->
                     <ScrollViewer Grid.Row="0">
                         <StackPanel>
-                            <ItemsControl ItemsSource="{Binding CheckboxItems}">
+                            <!-- "All" Checkbox -->
+                            <CheckBox Content="All" IsChecked="False" Checked="AllCheckbox_Checked" Unchecked="AllCheckbox_Unchecked">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <!-- Other Checkboxes -->
+                            <ItemsControl ItemsSource="{Binding MainTab.Tests}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}">
+                                            <CheckBox Content="{Binding Checkbox.Name}" IsChecked="{Binding Checkbox.IsChecked, Mode=TwoWay}">
                                                 <CheckBox.LayoutTransform>
                                                     <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
                                                 </CheckBox.LayoutTransform>
@@ -76,13 +84,6 @@
                     <!-- Add more content as needed -->
                 </StackPanel>
             </TabItem>
-
-            <TabItem Header="Console Output">
-                <Grid>
-                    <TextBox Text="{Binding ConsoleOutput}" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
-                </Grid>
-            </TabItem>
-
         </TabControl>
     </Grid>
 </Window>
