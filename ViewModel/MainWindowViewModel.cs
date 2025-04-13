@@ -7,6 +7,8 @@ using YamlDotNet.Serialization.NamingConventions;
 using SystemAutomationTesting.Model;
 using System.Diagnostics;
 using System.Text;
+using SystemAutomationTesting.Model.Tests;
+using System.ComponentModel;
 
 public class Device
 {
@@ -16,21 +18,38 @@ public class Device
     public string Value { get; set; }
 }
 
-public class MainWindowViewModel
+public class MainWindowViewModel: INotifyPropertyChanged
 {
-    public MainTab MainTab { get; set; }
     public ICommand ProcessSelectedCommand { get; }
+    public event PropertyChangedEventHandler PropertyChanged;
     public ObservableCollection<Device> Devices { get; set; }
+
+    private ObservableCollection<BaseTest> _tests;
+    public ObservableCollection<BaseTest> Tests
+    {
+        get => _tests;
+        set
+        {
+            if (_tests != value)
+            {
+                _tests = value;
+                OnPropertyChanged(nameof(Tests));
+            }
+        }
+    }
 
     public MainWindowViewModel()
     {
-        // Initialize MainTab
-        MainTab = new MainTab();
+        Tests = new ObservableCollection<BaseTest>
+            {
+                new Test1(),
+                new Test2()
+            };
 
         // Initialize command
         ProcessSelectedCommand = new RelayCommand(ProcessSelected);
 
-        // Example data
+            // Example data
         Devices = new ObservableCollection<Device>
         {
             new Device { DeviceIndex = 1, DeviceType = "Sensor", Parameter = "Temperature", Value = "25°C" },
@@ -39,15 +58,15 @@ public class MainWindowViewModel
         };
     }
 
-    public void CheckAll(bool isChecked)
+    protected virtual void OnPropertyChanged(string propertyName)
     {
-        MainTab.SetAllCheckboxes(isChecked);
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     private void ProcessSelected()
     {
         // Get selected checkboxes
-        var selectedItems = MainTab.Tests.Where(item => item.Checkbox.IsChecked).ToList();
+        var selectedItems = Tests.Where(item => item.Checkbox.IsChecked).ToList();
         // Get the updated Devices list
         var updatedDevices = Devices.ToList();
 
